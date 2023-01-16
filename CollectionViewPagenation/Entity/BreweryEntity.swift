@@ -14,10 +14,10 @@ struct BreweryEntity: Decodable {
     var firstBrewed: String
     var description: String
     var imageURL: String
-    var abv: Float
+    var abv: Float?
     var ibu: Float?
-    var targetFg: Int
-    var targetOg: Float
+    var targetFg: Int?
+    var targetOg: Float?
     var ebc: Int?
     var srm: Float?
     var ph: Float?
@@ -29,6 +29,14 @@ struct BreweryEntity: Decodable {
     var foodPairing: [String]
     var brewersTips: String
     var contributedBy: String
+    
+    var tagLines: String {
+        let tags = tagLine.components(separatedBy: ". ")
+        let hashTags = tags.map {
+            "#" + $0.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ".", with: "").replacingOccurrences(of: ",", with: " #")
+        }
+        return hashTags.joined(separator: " ")
+    }
     
     enum CodingKeys: String, CodingKey {
         case id, name, description, abv, ibu, ebc, srm, ph, volume, method, ingredients

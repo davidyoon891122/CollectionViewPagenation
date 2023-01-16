@@ -34,18 +34,12 @@ final class BreweryService {
                 switch status {
                 case 200..<300:
                     // JSON 처리
-                    do {
-                        let jsonModel = try JSONDecoder().decode(T.self, from: data)
-                        emitter.onNext(jsonModel)
-                    } catch {
-                        print(error)
+                    guard let jsonModel = try? JSONDecoder().decode(T.self, from: data) else {
+                        print(NetworkError.decodingError.rawValue)
+                        emitter.onError(NetworkError.decodingError)
+                        return
                     }
-//                    guard let jsonModel = try? JSONDecoder().decode(T.self, from: data) else {
-//                        print(NetworkError.decodingError.rawValue)
-//                        emitter.onError(NetworkError.decodingError)
-//                        return
-//                    }
-//                    emitter.onNext(jsonModel)
+                    emitter.onNext(jsonModel)
                 default:
                     print(NetworkError.responseError.rawValue)
                     emitter.onError(NetworkError.responseError)

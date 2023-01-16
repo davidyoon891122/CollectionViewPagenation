@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol BreweryViewModelInput {
     func requestBrewery(page: Int, size: Int)
 }
 
 protocol BreweryViewModelOutput {
-    
+    var breweriesPublishSubject: PublishSubject<[BreweryModel]> { get }
 }
 
 protocol BreweryViewModelType {
@@ -24,10 +25,23 @@ final class BreweryViewModel: BreweryViewModelType, BreweryViewModelInput, Brewe
     var inputs: BreweryViewModelInput { self }
     var outputs: BreweryViewModelOutput { self }
     
-    private let repository = Repository()
+    private let repository = BreweryRepository()
+    private var disposeBag = DisposeBag()
+    
+    private var breweries: [BreweryModel] = []
+    
+    var breweriesPublishSubject: PublishSubject<[BreweryModel]> = .init()
     
     func requestBrewery(page: Int, size: Int) {
-        repository.requestBreweryList(page: page, size: size)
+        repository.requestList(page: page, size: size)
+            .subscribe(onNext: { [weak self] breweries in
+                guard let self = self else { return }
+                self.breweries += breweries
+                self.outputs.breweriesPublishSubject.onNext(self.breweries)
+            }, onError: { error in
+                print(error)
+            })
+            .disposed(by: disposeBag)
         
     }
 

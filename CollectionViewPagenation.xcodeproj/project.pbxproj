@@ -16,9 +16,9 @@
 		491ED5C02974CF6400E6B5F1 /* BreweryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5BF2974CF6400E6B5F1 /* BreweryCollectionViewCell.swift */; };
 		491ED5C22974D93000E6B5F1 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5C12974D93000E6B5F1 /* TagCollectionViewCell.swift */; };
 		491ED5C42975034D00E6B5F1 /* BreweryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5C32975034D00E6B5F1 /* BreweryViewModel.swift */; };
-		491ED5C62975056600E6B5F1 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5C52975056600E6B5F1 /* Repository.swift */; };
+		491ED5C62975056600E6B5F1 /* BreweryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5C52975056600E6B5F1 /* BreweryRepository.swift */; };
 		491ED5C92975086600E6B5F1 /* BreweryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5C82975086600E6B5F1 /* BreweryService.swift */; };
-		491ED5CE2975089200E6B5F1 /* BreweryResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5CD2975089200E6B5F1 /* BreweryResponseModel.swift */; };
+		491ED5CE2975089200E6B5F1 /* BreweryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5CD2975089200E6B5F1 /* BreweryModel.swift */; };
 		491ED5D1297508AE00E6B5F1 /* BreweryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5D0297508AE00E6B5F1 /* BreweryEntity.swift */; };
 		491ED5D5297515D000E6B5F1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 491ED5D4297515D000E6B5F1 /* RxCocoa */; };
 		491ED5D7297515D000E6B5F1 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 491ED5D6297515D000E6B5F1 /* RxRelay */; };
@@ -38,9 +38,9 @@
 		491ED5BF2974CF6400E6B5F1 /* BreweryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryCollectionViewCell.swift; sourceTree = "<group>"; };
 		491ED5C12974D93000E6B5F1 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		491ED5C32975034D00E6B5F1 /* BreweryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryViewModel.swift; sourceTree = "<group>"; };
-		491ED5C52975056600E6B5F1 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		491ED5C52975056600E6B5F1 /* BreweryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryRepository.swift; sourceTree = "<group>"; };
 		491ED5C82975086600E6B5F1 /* BreweryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryService.swift; sourceTree = "<group>"; };
-		491ED5CD2975089200E6B5F1 /* BreweryResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryResponseModel.swift; sourceTree = "<group>"; };
+		491ED5CD2975089200E6B5F1 /* BreweryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryModel.swift; sourceTree = "<group>"; };
 		491ED5D0297508AE00E6B5F1 /* BreweryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryEntity.swift; sourceTree = "<group>"; };
 		491ED5DD29751CC700E6B5F1 /* URLInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +117,7 @@
 		491ED5C72975056900E6B5F1 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				491ED5C52975056600E6B5F1 /* Repository.swift */,
+				491ED5C52975056600E6B5F1 /* BreweryRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -133,7 +133,7 @@
 		491ED5CF2975089500E6B5F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				491ED5CD2975089200E6B5F1 /* BreweryResponseModel.swift */,
+				491ED5CD2975089200E6B5F1 /* BreweryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,12 +229,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				491ED5C92975086600E6B5F1 /* BreweryService.swift in Sources */,
-				491ED5C62975056600E6B5F1 /* Repository.swift in Sources */,
+				491ED5C62975056600E6B5F1 /* BreweryRepository.swift in Sources */,
 				491ED5DE29751CC700E6B5F1 /* URLInfo.swift in Sources */,
 				491ED5BD2974CE1B00E6B5F1 /* BreweryViewController.swift in Sources */,
 				491ED5D1297508AE00E6B5F1 /* BreweryEntity.swift in Sources */,
 				491ED5C02974CF6400E6B5F1 /* BreweryCollectionViewCell.swift in Sources */,
-				491ED5CE2975089200E6B5F1 /* BreweryResponseModel.swift in Sources */,
+				491ED5CE2975089200E6B5F1 /* BreweryModel.swift in Sources */,
 				491ED5C22974D93000E6B5F1 /* TagCollectionViewCell.swift in Sources */,
 				491ED5C42975034D00E6B5F1 /* BreweryViewModel.swift in Sources */,
 				491ED5A52974CD4100E6B5F1 /* AppDelegate.swift in Sources */,

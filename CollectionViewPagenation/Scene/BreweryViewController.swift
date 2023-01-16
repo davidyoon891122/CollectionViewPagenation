@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class BreweryViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
@@ -27,10 +29,18 @@ final class BreweryViewController: UIViewController {
     }()
     
     private let viewModel: BreweryViewModelType = BreweryViewModel()
+    private var disposeBag = DisposeBag()
+    
+    private var breweries: [BreweryModel] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +51,7 @@ final class BreweryViewController: UIViewController {
 
 extension BreweryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return breweries.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -76,5 +86,15 @@ private extension BreweryViewController {
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
+    }
+    
+    func bindViewModel() {
+        viewModel.outputs.breweriesPublishSubject
+            .subscribe(onNext: { [weak self] breweries in
+                guard let self = self else { return }
+                self.breweries = breweries
+            })
+            .disposed(by: disposeBag)
+        
     }
 }
