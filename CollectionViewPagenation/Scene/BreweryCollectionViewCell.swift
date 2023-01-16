@@ -32,7 +32,21 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
+        
+        collectionView.register(
+            TagCollectionViewCell.self,
+            forCellWithReuseIdentifier: TagCollectionViewCell.identifier
+        )
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 8.0, bottom: 0, right: 8.0)
         
         return collectionView
     }()
@@ -71,8 +85,49 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    private var tags: [String] = ["Hello", "Korean", "iOS", "DynamicProgramming"]
+    
     func setupCell() {
         setupViews()
+    }
+}
+
+extension BreweryCollectionViewCell: UICollectionViewDataSource {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return tags.count
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: TagCollectionViewCell.identifier,
+            for: indexPath
+        ) as? TagCollectionViewCell else { return UICollectionViewCell() }
+        cell.configure(name: tags[indexPath.item])
+        cell.setupCell()
+        return cell
+    }
+}
+
+extension BreweryCollectionViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+
+        let sizeLabel = UILabel()
+        sizeLabel.font = .systemFont(ofSize: 14.0)
+        sizeLabel.text = tags[indexPath.item]
+        sizeLabel.sizeToFit()
+        print(sizeLabel.frame.width)
+        
+        return CGSize(width: sizeLabel.frame.width + 16, height: 30.0)
     }
 }
 
