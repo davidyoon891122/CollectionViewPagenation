@@ -20,6 +20,11 @@
 		491ED5C92975086600E6B5F1 /* BreweryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5C82975086600E6B5F1 /* BreweryService.swift */; };
 		491ED5CE2975089200E6B5F1 /* BreweryResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5CD2975089200E6B5F1 /* BreweryResponseModel.swift */; };
 		491ED5D1297508AE00E6B5F1 /* BreweryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5D0297508AE00E6B5F1 /* BreweryEntity.swift */; };
+		491ED5D5297515D000E6B5F1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 491ED5D4297515D000E6B5F1 /* RxCocoa */; };
+		491ED5D7297515D000E6B5F1 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 491ED5D6297515D000E6B5F1 /* RxRelay */; };
+		491ED5D9297515D000E6B5F1 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 491ED5D8297515D000E6B5F1 /* RxSwift */; };
+		491ED5DC297515F700E6B5F1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 491ED5DB297515F700E6B5F1 /* Alamofire */; };
+		491ED5DE29751CC700E6B5F1 /* URLInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED5DD29751CC700E6B5F1 /* URLInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,7 @@
 		491ED5C82975086600E6B5F1 /* BreweryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryService.swift; sourceTree = "<group>"; };
 		491ED5CD2975089200E6B5F1 /* BreweryResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryResponseModel.swift; sourceTree = "<group>"; };
 		491ED5D0297508AE00E6B5F1 /* BreweryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryEntity.swift; sourceTree = "<group>"; };
+		491ED5DD29751CC700E6B5F1 /* URLInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +50,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491ED5DC297515F700E6B5F1 /* Alamofire in Frameworks */,
+				491ED5D7297515D000E6B5F1 /* RxRelay in Frameworks */,
+				491ED5D5297515D000E6B5F1 /* RxCocoa in Frameworks */,
+				491ED5D9297515D000E6B5F1 /* RxSwift in Frameworks */,
 				491ED5BB2974CDEF00E6B5F1 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +89,7 @@
 				491ED5AD2974CD4300E6B5F1 /* Assets.xcassets */,
 				491ED5AF2974CD4300E6B5F1 /* LaunchScreen.storyboard */,
 				491ED5B22974CD4300E6B5F1 /* Info.plist */,
+				491ED5DD29751CC700E6B5F1 /* URLInfo.swift */,
 			);
 			path = CollectionViewPagenation;
 			sourceTree = "<group>";
@@ -153,6 +164,10 @@
 			name = CollectionViewPagenation;
 			packageProductDependencies = (
 				491ED5BA2974CDEF00E6B5F1 /* SnapKit */,
+				491ED5D4297515D000E6B5F1 /* RxCocoa */,
+				491ED5D6297515D000E6B5F1 /* RxRelay */,
+				491ED5D8297515D000E6B5F1 /* RxSwift */,
+				491ED5DB297515F700E6B5F1 /* Alamofire */,
 			);
 			productName = CollectionViewPagenation;
 			productReference = 491ED5A12974CD4100E6B5F1 /* CollectionViewPagenation.app */;
@@ -184,6 +199,8 @@
 			mainGroup = 491ED5982974CD4100E6B5F1;
 			packageReferences = (
 				491ED5B92974CDEF00E6B5F1 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				491ED5D3297515D000E6B5F1 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				491ED5DA297515F700E6B5F1 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 491ED5A22974CD4100E6B5F1 /* Products */;
 			projectDirPath = "";
@@ -213,6 +230,7 @@
 			files = (
 				491ED5C92975086600E6B5F1 /* BreweryService.swift in Sources */,
 				491ED5C62975056600E6B5F1 /* Repository.swift in Sources */,
+				491ED5DE29751CC700E6B5F1 /* URLInfo.swift in Sources */,
 				491ED5BD2974CE1B00E6B5F1 /* BreweryViewController.swift in Sources */,
 				491ED5D1297508AE00E6B5F1 /* BreweryEntity.swift in Sources */,
 				491ED5C02974CF6400E6B5F1 /* BreweryCollectionViewCell.swift in Sources */,
@@ -440,6 +458,22 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		491ED5D3297515D000E6B5F1 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		491ED5DA297515F700E6B5F1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -447,6 +481,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 491ED5B92974CDEF00E6B5F1 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		491ED5D4297515D000E6B5F1 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 491ED5D3297515D000E6B5F1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		491ED5D6297515D000E6B5F1 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 491ED5D3297515D000E6B5F1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		491ED5D8297515D000E6B5F1 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 491ED5D3297515D000E6B5F1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		491ED5DB297515F700E6B5F1 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 491ED5DA297515F700E6B5F1 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -15,13 +15,13 @@ struct BreweryEntity: Decodable {
     var description: String
     var imageURL: String
     var abv: Float
-    var ibu: Int
+    var ibu: Float?
     var targetFg: Int
-    var targetOg: Int
-    var ebc: Int
-    var srm: Int
-    var ph: Float
-    var attenuationLevel: Int
+    var targetOg: Float
+    var ebc: Int?
+    var srm: Float?
+    var ph: Float?
+    var attenuationLevel: Float
     var volume: BreweryVolumn
     var boilVolumn: BreweryBoilVolumn
     var method: BreweryMethod
@@ -38,7 +38,7 @@ struct BreweryEntity: Decodable {
         case targetFg = "target_fg"
         case targetOg = "target_og"
         case attenuationLevel = "attenuation_level"
-        case boilVolumn = "boil_volumn"
+        case boilVolumn = "boil_volume"
         case foodPairing = "food_pairing"
         case brewersTips = "brewers_tips"
         case contributedBy = "contributed_by"
@@ -65,22 +65,26 @@ struct BreweryBoilVolumn: Decodable {
 
 struct BreweryMethod: Decodable {
     var mashTemp: [MashTemp]
-    var fermentation: MashTemp
+    var fermentation: Fermentation
     var twist: String?
     
     enum CodingKeys: String, CodingKey {
-        case mashTemp = "mesh_temp"
+        case mashTemp = "mash_temp"
         case fermentation, twist
     }
 }
 
 struct MashTemp: Decodable {
     var temp: Temp
-    var duration: Int
+    var duration: Int?
     
     enum CodingKeys: String, CodingKey {
         case temp, duration
     }
+}
+
+struct Fermentation: Decodable {
+    var temp: Temp
 }
 
 struct Temp: Decodable {

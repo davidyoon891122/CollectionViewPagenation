@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BreweryViewModelInput {
-    
+    func requestBrewery(page: Int, size: Int)
 }
 
 protocol BreweryViewModelOutput {
@@ -24,6 +24,12 @@ final class BreweryViewModel: BreweryViewModelType, BreweryViewModelInput, Brewe
     var inputs: BreweryViewModelInput { self }
     var outputs: BreweryViewModelOutput { self }
     
+    private let repository = Repository()
+    
+    func requestBrewery(page: Int, size: Int) {
+        repository.requestBreweryList(page: page, size: size)
+        
+    }
 
     
 }
