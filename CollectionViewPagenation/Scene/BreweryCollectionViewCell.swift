@@ -114,7 +114,8 @@ extension BreweryCollectionViewCell: UICollectionViewDataSource {
             withReuseIdentifier: TagCollectionViewCell.identifier,
             for: indexPath
         ) as? TagCollectionViewCell else { return UICollectionViewCell() }
-        cell.setupCell()
+        let tag = tags[indexPath.item]
+        cell.setupCell(tag: tag)
         return cell
     }
 }

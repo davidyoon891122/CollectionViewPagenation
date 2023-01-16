@@ -14,6 +14,7 @@ final class TagCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14.0)
+        label.textColor = .label
         
         return label
     }()
@@ -39,7 +40,8 @@ final class TagCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    func setupCell() {
+    func setupCell(tag: String) {
+        titleLabel.text = tag
         setupViews()
     }
 }
