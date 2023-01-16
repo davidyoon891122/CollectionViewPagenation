@@ -29,48 +29,95 @@ struct BreweryEntity: Decodable {
     var foodPairing: [String]
     var brewersTips: String
     var contributedBy: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id, name, description, abv, ibu, ebc, srm, ph, volume, method, ingredients
+        case tagLine = "tagline"
+        case firstBrewed = "first_brewed"
+        case imageURL = "image_url"
+        case targetFg = "target_fg"
+        case targetOg = "target_og"
+        case attenuationLevel = "attenuation_level"
+        case boilVolumn = "boil_volumn"
+        case foodPairing = "food_pairing"
+        case brewersTips = "brewers_tips"
+        case contributedBy = "contributed_by"
+    }
 }
 
 struct BreweryVolumn: Decodable {
     var value: Int
     var unit: String
+    
+    enum CodingKeys: String, CodingKey {
+        case value, unit
+    }
 }
 
 struct BreweryBoilVolumn: Decodable {
     var value: Int
     var unit: String
+    
+    enum CodingKeys: String, CodingKey {
+        case value, unit
+    }
 }
 
 struct BreweryMethod: Decodable {
     var mashTemp: [MashTemp]
     var fermentation: MashTemp
     var twist: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case mashTemp = "mesh_temp"
+        case fermentation, twist
+    }
 }
 
 struct MashTemp: Decodable {
     var temp: Temp
     var duration: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case temp, duration
+    }
 }
 
 struct Temp: Decodable {
     var value: Int
     var unit: String
+    
+    enum CodingKeys: String, CodingKey {
+        case value, unit
+    }
 }
 
 struct BreweryIngredients: Decodable {
     var malt: [Malt]
     var hops: [Hops]
     var yeast: String
+    
+    enum CodingKeys: String, CodingKey {
+        case malt, hops, yeast
+    }
 }
 
 struct Malt: Decodable {
     var name: String
     var amount: Amount
+    
+    enum CodingKeys: String, CodingKey {
+        case name, amount
+    }
 }
 
 struct Amount: Decodable {
     var value: Double
     var unit: String
+    
+    enum CodingKeys: String, CodingKey {
+        case value, unit
+    }
 }
 
 struct Hops: Decodable {
@@ -78,5 +125,9 @@ struct Hops: Decodable {
     var amount: Amount
     var add: String
     var attribute: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name, amount, add, attribute
+    }
 }
 
