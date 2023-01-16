@@ -14,7 +14,7 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
     private lazy var breweryImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.layer.cornerRadius = 40.0
+        imageView.layer.cornerRadius = 30.0
         imageView.backgroundColor = .gray
         
         return imageView
@@ -23,7 +23,7 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name"
-        label.font = .systemFont(ofSize: 12.0)
+        label.font = .systemFont(ofSize: 14.0, weight: .bold)
         
         return label
     }()
@@ -45,6 +45,7 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        collectionView.showsHorizontalScrollIndicator = false
         
         collectionView.contentInset = UIEdgeInsets(
             top: 0,
@@ -71,7 +72,7 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
         
         breweryImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(offset)
-            $0.width.height.equalTo(80.0)
+            $0.width.height.equalTo(60.0)
             $0.centerY.equalToSuperview()
         }
         
