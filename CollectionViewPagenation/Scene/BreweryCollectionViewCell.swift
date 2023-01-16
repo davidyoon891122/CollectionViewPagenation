@@ -46,7 +46,12 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
         collectionView.delegate = self
         
         
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 8.0, bottom: 0, right: 8.0)
+        collectionView.contentInset = UIEdgeInsets(
+            top: 0,
+            left: 8.0,
+            bottom: 0,
+            right: 8.0
+        )
         
         return collectionView
     }()
@@ -108,7 +113,6 @@ extension BreweryCollectionViewCell: UICollectionViewDataSource {
             withReuseIdentifier: TagCollectionViewCell.identifier,
             for: indexPath
         ) as? TagCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(name: tags[indexPath.item])
         cell.setupCell()
         return cell
     }
@@ -125,9 +129,11 @@ extension BreweryCollectionViewCell: UICollectionViewDelegateFlowLayout {
         sizeLabel.font = .systemFont(ofSize: 14.0)
         sizeLabel.text = tags[indexPath.item]
         sizeLabel.sizeToFit()
-        print(sizeLabel.frame.width)
         
-        return CGSize(width: sizeLabel.frame.width + 16, height: 30.0)
+        return CGSize(
+            width: sizeLabel.frame.width + 16,
+            height: 30.0
+        )
     }
 }
 

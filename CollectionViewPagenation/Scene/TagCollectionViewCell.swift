@@ -42,26 +42,6 @@ final class TagCollectionViewCell: UICollectionViewCell {
     func setupCell() {
         setupViews()
     }
-    
-    static func fittingSize(availableHeight: CGFloat, name: String?) -> CGSize {
-        let cell = TagCollectionViewCell()
-        cell.configure(name: name)
-        
-        let targetSize = CGSize(
-            width: UIView.layoutFittingCompressedSize.width,
-            height: availableHeight
-        )
-        
-        return cell.contentView.systemLayoutSizeFitting(
-            targetSize,
-            withHorizontalFittingPriority: .fittingSizeLevel,
-            verticalFittingPriority: .required
-        )
-    }
-    
-    func configure(name: String?) {
-        titleLabel.text = name
-    }
 }
 
 private extension TagCollectionViewCell {
