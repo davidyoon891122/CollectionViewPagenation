@@ -31,7 +31,7 @@ final class BreweryRepository: Repository {
                 responseType: [BreweryEntity].self,
                 parameter: [
                     "page": "\(page)",
-                    "size": "\(size)"
+                    "per_page": "\(size)"
                 ],
                 header: [:]
             )
