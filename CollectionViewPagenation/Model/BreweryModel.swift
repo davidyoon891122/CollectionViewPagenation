@@ -10,5 +10,5 @@ import Foundation
 struct BreweryModel {
     var name: String
     var imageURL: String
-    var tagLines: String
+    var tagLines: [String]
 }

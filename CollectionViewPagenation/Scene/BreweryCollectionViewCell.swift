@@ -93,7 +93,9 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
     
     private var tags: [String] = ["Hello", "Korean", "iOS", "DynamicProgramming"]
     
-    func setupCell() {
+    func setupCell(brewery: BreweryModel) {
+        nameLabel.text = brewery.name
+        tags = brewery.tagLines
         setupViews()
     }
 }

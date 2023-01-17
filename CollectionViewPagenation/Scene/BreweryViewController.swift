@@ -59,8 +59,8 @@ extension BreweryViewController: UICollectionViewDataSource {
             withReuseIdentifier: BreweryCollectionViewCell.identifier,
             for: indexPath
         ) as? BreweryCollectionViewCell else { return UICollectionViewCell() }
-        
-        cell.setupCell()
+        let brewery = breweries[indexPath.item]
+        cell.setupCell(brewery: brewery)
         
         return cell
     }

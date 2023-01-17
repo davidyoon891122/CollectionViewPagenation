@@ -30,12 +30,12 @@ struct BreweryEntity: Decodable {
     var brewersTips: String
     var contributedBy: String
     
-    var tagLines: String {
+    var tagLines: [String] {
         let tags = tagLine.components(separatedBy: ". ")
         let hashTags = tags.map {
             "#" + $0.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ".", with: "").replacingOccurrences(of: ",", with: " #")
         }
-        return hashTags.joined(separator: " ")
+        return hashTags
     }
     
     enum CodingKeys: String, CodingKey {
