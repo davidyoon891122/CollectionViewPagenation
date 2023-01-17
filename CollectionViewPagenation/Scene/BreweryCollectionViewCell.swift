@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class BreweryCollectionViewCell: UICollectionViewCell {
     static let identifier = "BreweryCollectionViewCell"
@@ -16,6 +17,7 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
         
         imageView.layer.cornerRadius = 30.0
         imageView.backgroundColor = .gray
+        imageView.contentMode = .scaleAspectFit
         
         return imageView
     }()
@@ -96,6 +98,8 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
     func setupCell(brewery: BreweryModel) {
         nameLabel.text = brewery.name
         tags = brewery.tagLines
+        let url = URL(string: brewery.imageURL)
+        breweryImageView.kf.setImage(with: url)
         setupViews()
     }
 }

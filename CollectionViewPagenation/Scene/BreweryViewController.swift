@@ -45,7 +45,7 @@ final class BreweryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.inputs.requestBrewery(page: 1, size: 1)
+        viewModel.inputs.requestBrewery(page: 1, size: 20)
     }
 }
 
