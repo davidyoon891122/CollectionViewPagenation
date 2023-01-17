@@ -25,7 +25,8 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name"
-        label.font = .systemFont(ofSize: 14.0, weight: .bold)
+        label.font = .systemFont(ofSize: 12.0, weight: .bold)
+        label.numberOfLines = 2
         
         return label
     }()
@@ -81,6 +82,7 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
         nameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(offset)
             $0.leading.equalTo(breweryImageView.snp.trailing).offset(offset)
+            $0.trailing.equalToSuperview().offset(-offset)
         }
         
         tagCollectionView.snp.makeConstraints {
@@ -93,11 +95,16 @@ final class BreweryCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private var tags: [String] = ["Hello", "Korean", "iOS", "DynamicProgramming"]
+    private var tags: [String] = ["Hello", "Korean", "iOS", "DynamicProgramming"] {
+        didSet {
+            tagCollectionView.reloadData()
+        }
+    }
     
     func setupCell(brewery: BreweryModel) {
         nameLabel.text = brewery.name
         tags = brewery.tagLines
+        print("brewery name: \(brewery.name), tags: \(tags)")
         let url = URL(string: brewery.imageURL)
         breweryImageView.kf.setImage(with: url)
         setupViews()

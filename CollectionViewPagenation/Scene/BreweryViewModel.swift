@@ -14,6 +14,7 @@ protocol BreweryViewModelInput {
 
 protocol BreweryViewModelOutput {
     var breweriesPublishSubject: PublishSubject<[BreweryModel]> { get }
+    var currentPagePublishSubject: PublishSubject<Int> { get }
 }
 
 protocol BreweryViewModelType {
@@ -31,8 +32,15 @@ final class BreweryViewModel: BreweryViewModelType, BreweryViewModelInput, Brewe
     private var breweries: [BreweryModel] = []
     
     var breweriesPublishSubject: PublishSubject<[BreweryModel]> = .init()
+    var currentPagePublishSubject: PublishSubject<Int> = .init()
+    
+    private var currentPage = 1
     
     func requestBrewery(page: Int, size: Int) {
+        currentPage = page + 1
+        
+        currentPagePublishSubject.onNext(currentPage)
+        
         repository.requestList(page: page, size: size)
             .subscribe(onNext: { [weak self] breweries in
                 guard let self = self else { return }

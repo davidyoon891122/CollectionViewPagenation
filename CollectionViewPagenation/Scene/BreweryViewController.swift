@@ -19,6 +19,7 @@ final class BreweryViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.prefetchDataSource = self
         
         collectionView.register(
             BreweryCollectionViewCell.self,
@@ -37,6 +38,8 @@ final class BreweryViewController: UIViewController {
         }
     }
     
+    private var currentPage = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -45,16 +48,38 @@ final class BreweryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.inputs.requestBrewery(page: 1, size: 20)
+        viewModel.inputs.requestBrewery(page: currentPage, size: 25)
     }
 }
 
+extension BreweryViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        prefetchItemsAt indexPaths: [IndexPath]
+    ) {
+        guard currentPage != 1 else { return }
+        
+        indexPaths.forEach{
+            if ($0.row + 1)/25 + 1 == currentPage {
+                self.viewModel.inputs.requestBrewery(page: currentPage, size: 25)
+            }
+        }
+    }
+}
+
+
 extension BreweryViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return breweries.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: BreweryCollectionViewCell.identifier,
             for: indexPath
@@ -93,6 +118,13 @@ private extension BreweryViewController {
             .subscribe(onNext: { [weak self] breweries in
                 guard let self = self else { return }
                 self.breweries = breweries
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.currentPagePublishSubject
+            .subscribe(onNext: { [weak self] currentPage in
+                guard let self = self else { return }
+                self.currentPage = currentPage
             })
             .disposed(by: disposeBag)
         

@@ -40,7 +40,7 @@ final class BreweryRepository: Repository {
                 result.forEach {
                     let brewery = BreweryModel(
                         name: $0.name,
-                        imageURL: $0.imageURL,
+                        imageURL: $0.imageURL ?? "",
                         tagLines: $0.tagLines
                     )
                     breweries.append(brewery)

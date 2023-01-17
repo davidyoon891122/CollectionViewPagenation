@@ -13,15 +13,15 @@ struct BreweryEntity: Decodable {
     var tagLine: String
     var firstBrewed: String
     var description: String
-    var imageURL: String
+    var imageURL: String?
     var abv: Float?
     var ibu: Float?
     var targetFg: Int?
     var targetOg: Float?
-    var ebc: Int?
+    var ebc: Float?
     var srm: Float?
     var ph: Float?
-    var attenuationLevel: Float
+    var attenuationLevel: Float?
     var volume: BreweryVolumn
     var boilVolumn: BreweryBoilVolumn
     var method: BreweryMethod
@@ -96,8 +96,8 @@ struct Fermentation: Decodable {
 }
 
 struct Temp: Decodable {
-    var value: Int
-    var unit: String
+    var value: Int?
+    var unit: String?
     
     enum CodingKeys: String, CodingKey {
         case value, unit
@@ -107,7 +107,7 @@ struct Temp: Decodable {
 struct BreweryIngredients: Decodable {
     var malt: [Malt]
     var hops: [Hops]
-    var yeast: String
+    var yeast: String?
     
     enum CodingKeys: String, CodingKey {
         case malt, hops, yeast
