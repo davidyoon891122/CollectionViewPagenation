@@ -92,7 +92,16 @@ extension BreweryViewController: UICollectionViewDataSource {
 }
 
 extension BreweryViewController: UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        
+        let brewery = breweries[indexPath.item]
+        let detailVC = BreweryDetailViewController(brewery: brewery)
+        
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 private extension BreweryViewController {
