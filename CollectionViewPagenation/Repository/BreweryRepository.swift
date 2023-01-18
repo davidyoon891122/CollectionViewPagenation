@@ -41,7 +41,9 @@ final class BreweryRepository: Repository {
                     let brewery = BreweryModel(
                         name: $0.name,
                         imageURL: $0.imageURL ?? "",
-                        tagLines: $0.tagLines
+                        tagLines: $0.tagLines,
+                        description: $0.description,
+                        foodPairing: $0.foodPairing
                     )
                     breweries.append(brewery)
                 }

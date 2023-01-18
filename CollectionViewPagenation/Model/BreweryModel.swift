@@ -11,4 +11,6 @@ struct BreweryModel {
     var name: String
     var imageURL: String
     var tagLines: [String]
+    var description: String
+    var foodPairing: [String]
 }
